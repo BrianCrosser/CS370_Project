@@ -1,7 +1,7 @@
 # CS370_Project
 Brian Crosser
 Zach Swinford
-Lisa Churchhill
+Lisa Churchman
 
 Product Backlog
 

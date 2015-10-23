@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
     Button button1;
+    Button button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,15 @@ public class MainActivity extends Activity {
                 startActivityForResult(intent, 0);
             }
         });
+        button3 = (Button) findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), BAC_CalculatorActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
     }
 
 }

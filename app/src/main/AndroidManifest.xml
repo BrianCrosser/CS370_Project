@@ -25,6 +25,10 @@
             android:name=".BAC_CalculatorActivity"
             android:label="@string/title_activity_bac__calculator" >
         </activity>
+        <activity
+            android:name=".Activity.BAC_CalculatorActivity"
+            android:label="@string/title_activity_bac__calculator" >
+        </activity>
     </application>
 
 </manifest>

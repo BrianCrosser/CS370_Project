@@ -1,23 +1,32 @@
-package com.example.lisa.shakennotstirred;
+package com.example.lisa.shakennotstirred.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import com.example.lisa.shakennotstirred.R;
 
 public class BAC_CalculatorActivity extends Activity {
+    private Spinner genderSpinner;
+    private EditText genderInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bac__calculator2);
+        setContentView(R.layout.activity_bac__calculator);
+
+        genderSpinner = (Spinner)findViewById(R.id.spinner);
+        genderInput = (EditText)findViewById(R.id.genderInput);
     }
 
-
     @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_bac_calculator, menu);
+        getMenuInflater().inflate(R.menu.menu_bac__calculator, menu);
         return true;
     }
 

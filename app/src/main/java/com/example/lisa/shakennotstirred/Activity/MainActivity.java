@@ -1,10 +1,14 @@
-package com.example.lisa.shakennotstirred;
+package com.example.lisa.shakennotstirred.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.lisa.shakennotstirred.Activity.BAC_CalculatorActivity;
+import com.example.lisa.shakennotstirred.R;
+import com.example.lisa.shakennotstirred.SearchActivity;
 
 
 public class MainActivity extends Activity {

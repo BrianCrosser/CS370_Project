@@ -1,4 +1,4 @@
-package com.example.lisa.shakennotstirred;
+package com.example.lisa.shakennotstirred.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.lisa.shakennotstirred.activity.BAC_CalculatorActivity;
+import com.example.lisa.shakennotstirred.R;
+
 
 public class MainActivity extends Activity {
 
     Button button1;
     Button button3;
+    Button button4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,14 @@ public class MainActivity extends Activity {
 
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), BAC_CalculatorActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+        button4 = (Button) findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Inventory.class);
                 startActivityForResult(intent, 0);
             }
         });

@@ -8,4 +8,6 @@
     <string name="app_label">Search</string>
     <string name="title_activity_search">Cocktail Search</string>
     <string name="title_activity_bac__calculator">BAC Calculator</string>
+    <string name="title_alcohol_inventory">Cabinet</string>
+    <string name="title_activity_inventory">Inventory</string>
 </resources>

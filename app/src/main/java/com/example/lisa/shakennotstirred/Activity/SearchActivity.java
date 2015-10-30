@@ -1,20 +1,38 @@
-package com.example.lisa.shakennotstirred;
+package com.example.lisa.shakennotstirred.activity;
 
+import com.example.lisa.shakennotstirred.models.DrinkRecipeModel;
+import com.example.lisa.shakennotstirred.models.SearchResultModel;
+import com.example.lisa.shakennotstirred.services.APIClient;
+import com.example.lisa.shakennotstirred.adapters.DrinkRecipeListAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import rx.schedulers.Schedulers;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+
+
+
+import java.util.ArrayList;
+
+import com.example.lisa.shakennotstirred.R;
 
 public class SearchActivity extends Activity {
 
-    ListView lv;
+    private ListView ListView1;
+    private Button searchButton;
+    private EditText searchInput;
     SearchView sv;
 
-    String[] alcohols= {"Rum", "Gin", "Brandy", "Tequila", "Vodka", "Whiskey", "Mezcal", "Pisco"};
-    ArrayAdapter<String> adapter;
+  //  String[] alcohols= {"Rum", "Gin", "Brandy", "Tequila", "Vodka", "Whiskey", "Mezcal", "Pisco"};
+  //  ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,26 +40,41 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.activity_search);
 
 
-        lv= (ListView) findViewById(R.id.ListView1);
-        sv= (SearchView) findViewById(R.id.searchView1);
+        ListView1 = (ListView) findViewById(R.id.ListView1);
+        // sv = (SearchView) findViewById(R.id.searchView1);
+        searchButton = (Button) findViewById(R.id.searchButton);
+        searchInput = (EditText) findViewById(R.id.searchInput);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alcohols);
-        lv.setAdapter(adapter);
-
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String text) {
-                return false;
-            }
+            public void onClick(View v) {
+                // SearchResultModel model = createMock()
+                APIClient.getRecipeProvider()
+                        .getDrinkRecipesByIngredient(searchInput.getText().toString())
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<SearchResultModel>() {
 
-            @Override
-            public boolean onQueryTextChange(String text) {
-                adapter.getFilter().filter(text);
-                return false;
+                            @Override
+                            public void onCompleted() {
+
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                int i = 0;
+                            }
+
+                            @Override
+                            public void onNext(SearchResultModel searchResultModel) {
+                                ListView1.setAdapter(new DrinkRecipeListAdapter(SearchActivity.this, searchResultModel.getSearchResults()));
+                            }
+                        });
             }
         });
-
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

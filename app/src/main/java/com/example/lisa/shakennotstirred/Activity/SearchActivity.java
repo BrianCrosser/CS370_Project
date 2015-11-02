@@ -1,54 +1,41 @@
-package com.example.lisa.shakennotstirred.activity;
+package com.example.lisa.shakennotstirred.Activity;
 
-import com.example.lisa.shakennotstirred.models.DrinkRecipeModel;
-import com.example.lisa.shakennotstirred.models.SearchResultModel;
-import com.example.lisa.shakennotstirred.services.APIClient;
-import com.example.lisa.shakennotstirred.adapters.DrinkRecipeListAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SearchView;
-import rx.schedulers.Schedulers;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-
-
-
-import java.util.ArrayList;
 
 import com.example.lisa.shakennotstirred.R;
+import com.example.lisa.shakennotstirred.adapters.DrinkRecipeListAdapter;
+import com.example.lisa.shakennotstirred.models.SearchResultModel;
+import com.example.lisa.shakennotstirred.services.APIClient;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class SearchActivity extends Activity {
 
     private ListView ListView1;
     private Button searchButton;
     private EditText searchInput;
-    SearchView sv;
-
-  //  String[] alcohols= {"Rum", "Gin", "Brandy", "Tequila", "Vodka", "Whiskey", "Mezcal", "Pisco"};
-  //  ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
         ListView1 = (ListView) findViewById(R.id.ListView1);
-        // sv = (SearchView) findViewById(R.id.searchView1);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchInput = (EditText) findViewById(R.id.searchInput);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // SearchResultModel model = createMock()
                 APIClient.getRecipeProvider()
                         .getDrinkRecipesByIngredient(searchInput.getText().toString())
                         .subscribeOn(Schedulers.newThread())

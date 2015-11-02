@@ -10,4 +10,17 @@
     <string name="title_activity_bac__calculator">BAC Calculator</string>
     <string name="title_alcohol_inventory">Cabinet</string>
     <string name="title_activity_inventory">Inventory</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <string-array name="genders_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="weights_array">
+        <item>150</item>
+        <item>151</item>
+    </string-array>
+
+
 </resources>

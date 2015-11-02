@@ -1,4 +1,4 @@
-package com.example.lisa.shakennotstirred.activity;
+package com.example.lisa.shakennotstirred.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;

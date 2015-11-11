@@ -12,7 +12,7 @@
             android:name=".Activity.SplashScreen"
             android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter android:label="SnS" >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,10 +22,19 @@
         <activity
             android:name=".Activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+             >
+        </activity>
+        <activity
+            android:name=".Activity.CocktailDisplay"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Cocktail"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name=".Activity.SearchActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:label="@string/title_activity_search" >
         </activity>
         <activity

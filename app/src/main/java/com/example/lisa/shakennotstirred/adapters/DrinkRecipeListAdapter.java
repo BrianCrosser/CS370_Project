@@ -1,19 +1,18 @@
 package com.example.lisa.shakennotstirred.adapters;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.ImageView;
+
+import com.example.lisa.shakennotstirred.R;
+import com.example.lisa.shakennotstirred.models.DrinkRecipeModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.lisa.shakennotstirred.R;
-import com.example.lisa.shakennotstirred.models.SearchResultModel;
-import com.example.lisa.shakennotstirred.models.DrinkRecipeModel;
 
 /**
  * Created by Lisa on 10/28/15.
@@ -40,12 +39,17 @@ public class DrinkRecipeListAdapter extends ArrayAdapter<DrinkRecipeModel>{
         DrinkRecipeModel recipe = getItem(position);
 
         if (recipe != null) {
-            TextView nameText = (TextView) v.findViewById(R.id.nameText);
+           // TextView nameText = (TextView) v.findViewById(R.id.nameText);
+            ImageView icon = (ImageView) v.findViewById(R.id.cocktailThumb);
 
-            if (nameText != null) {
-                nameText.setText(recipe.getDrinkName());
+            if (icon != null){
+                Picasso.with(getContext()).load(recipe.drinkThumb).resize(200,200).into(icon);
             }
+//            if (nameText != null) {
+//                nameText.setText(recipe.getDrinkName());
+//            }
         }
         return v;
+
     }
 }

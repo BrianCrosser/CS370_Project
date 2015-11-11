@@ -1,18 +1,29 @@
 package com.example.lisa.shakennotstirred.models;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by Brian on 10/23/2015.
  */
+
+
 public class CalculatorModel {
-    private int weight;
+
+    public int weight;
     private Date beginTime;
-    private final double man = .73;
-    private final double woman = .66;
-    private int shots = 0;
-    private int beers = 0;
-    private int wine = 0;
+    public double man = .73;
+    public double woman = .66;
+    public int shots;
+    public int beers;
+    public int wine;
+
+
+    public void CalculatorModel(){
+        shots = 0;
+        beers = 0;
+        wine = 0;
+    }
 
 
     public void setWeight(String inputWeight)
@@ -27,7 +38,7 @@ public class CalculatorModel {
 
     public double getGender(String gender)
     {
-        if(gender == "Male")
+        if(Objects.equals(gender, "Male"))
             return man;
         else
             return woman;
@@ -50,17 +61,45 @@ public class CalculatorModel {
         return (totalConsumed() * 5.15 / weight * getGender(gender)) - .015 * getConsumptionTime();
     }
 
-    public void addShot() {shots++;}
+    public int getShotCount()
+    {
+        return shots;
+    }
 
-    public void addWine() {wine++;}
+    public int getBeerCount()
+    {
+        return shots;
+    }
 
-    public void addBeer() {beers++;}
+    public int getWineCount()
+    {
+        return shots;
+    }
 
-    public void subShot() {shots--;}
+    public void addShot() {
+        shots += 1;
+    }
 
-    public void subWine() {wine--;}
+    public void addWine() { wine += 1; }
 
-    public void subBeer() {beers--;}
+    public void addBeer() {
+        beers += 1;
+    }
+
+    public void subShot() {
+        if (shots > 0)
+            shots -= 1;
+    }
+
+    public void subWine() {
+        if (wine > 0)
+            wine -= 1;
+    }
+
+    public void subBeer() {
+        if (beers > 0)
+            beers -= 1;
+    }
 
 
 }

@@ -15,7 +15,7 @@ public class SearchResultModel {
         return searchResults;
     }
 
-//    public void setSearchResults(ArrayList<DrinkRecipeModel> searchResults){
-//        this.searchResults = searchResults;
- //   }
+    public void setSearchResults(ArrayList<DrinkRecipeModel> searchResults){
+        this.searchResults = searchResults;
+    }
 }

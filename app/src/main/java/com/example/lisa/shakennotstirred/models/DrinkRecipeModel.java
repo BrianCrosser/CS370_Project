@@ -2,7 +2,6 @@ package com.example.lisa.shakennotstirred.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -10,16 +9,22 @@ import java.util.ArrayList;
  */
 public class DrinkRecipeModel {
     @SerializedName("idDrink")
-    private int drinkId;
+    public int drinkId;
 
     @SerializedName("strDrink")
-    private String drinkName;
+    public String drinkName;
 
     @SerializedName("categories")
-    private String drinkCategories;
+    public String drinkCategories;
 
-    @SerializedName("ingredients")
-    private ArrayList<String> ingredients;
+    @SerializedName("strDrinkThumb")
+    public String drinkThumb;
+
+    @SerializedName("strIngredients")
+    public ArrayList<String> ingredients;
+
+    @SerializedName("strInstructions")
+    public String instructions;
 
 //    private boolean isAlcoholic;
 //    private String instructions;
@@ -40,8 +45,15 @@ public class DrinkRecipeModel {
         return drinkCategories;
     }
 
+    public String getDrinkThumb(){
+        return drinkThumb;
+    }
+
     public ArrayList<String> getIngredients() { return ingredients; }
 
+    public String getInstructions(){
+        return instructions;
+    }
 
     public void setDrinkId(int drinkId) { this.drinkId = drinkId; }
 
@@ -49,6 +61,10 @@ public class DrinkRecipeModel {
 
     public void setDrinkCategories(String drinkCategories) {
         this.drinkCategories = drinkCategories;
+    }
+
+    public void setDrinkThumb(String drinkThumb) {
+        this.drinkThumb = drinkThumb;
     }
 
     public void setIngredients(ArrayList<String> ingredients) {
